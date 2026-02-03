@@ -1,0 +1,29 @@
+tasks:
+  POMODORO-1:
+    assigned_agent: developer
+    current_status: CODE_WRITTEN
+    created_at: '2026-02-03'
+    title: Pomodoro Timer for Windows (Overlay)
+    spec_file: docs/specs/POMODORO-1.md
+    notes: Python 3.10+, tkinter, PyInstaller. Overlay window, configurable transparency and durations, task list with active task, one-click launch (exe or script).
+  POMODORO-2:
+    assigned_agent: developer
+    current_status: CODE_WRITTEN
+    created_at: '2026-02-03'
+    title: Доработки Pomodoro (горячие клавиши, активная задача, настройки, окно)
+    spec_file: docs/specs/POMODORO-2.md
+    notes: Hotkeys RU/EN, активная задача = первая без "+", перенос текста задачи, применение work/break минут, компактное окно по нижнему краю.
+  POMODORO-3:
+    assigned_agent: developer
+    current_status: CODE_WRITTEN
+    created_at: '2026-02-03'
+    title: Горячие клавиши RU, README, AGENTS, UI-правки
+    spec_file: docs/specs/POMODORO-3.md
+    notes: Hotkeys на русской раскладке, README.md для GitHub, убрать старую архитектуру из AGENTS.md, подрезка кнопок 1px, надпись Настройки в тёмной теме.
+  POMODORO-4:
+    assigned_agent: developer
+    current_status: SPEC_READY
+    created_at: '2026-02-03'
+    title: Мультиплатформенная поддержка (macOS, Linux)
+    spec_file: docs/specs/POMODORO-4.md
+    notes: PyInstaller под macOS/Linux, spec без Windows DLL на других платформах; звук (afplay/aplay/ffplay) и привлечение внимания (bounce/lift) на macOS/Linux; конфиг рядом с exe/скриптом.

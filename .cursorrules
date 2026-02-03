@@ -1,0 +1,50 @@
+# Psy-Bot Project Rules (v3.0)
+
+## 🎯 Global Directives
+- **Source of Truth**: Always respect `status.yaml` for task management.
+- **Contract-First**: Never start implementation without a specification in `docs/specs/`.
+- **LSP-First**: Use Pyright for semantic analysis before and after any code changes.
+- **Linter**: Use `ruff` for linting and formatting.
+
+## 🛠 Skills & Protocols
+
+### [skill:spec] - Analyst Role
+- Trigger: User asks for a new feature.
+- Protocol: 
+  1. Ask clarifying questions.
+  2. Create `docs/specs/[TASK_ID].md`.
+  3. Use REQ-ID format: `[REQ-{TASK_ID}-{NN}]`.
+  4. Update `status.yaml` to `SPEC_READY`.
+
+### [skill:code] - Developer Role
+- Trigger: Task is `SPEC_READY` or `DEV_FIX_NEEDED`.
+- Protocol:
+  1. Use Type Hints and Pydantic.
+  2. Wrap logic in semantic regions:
+     ```python
+     # [START SPEC:{ID}:{NAME}]
+     # req_refs: REQ-ID-01, REQ-ID-02
+     ... implementation ...
+     # [END SPEC:{ID}:{NAME}]
+     ```
+  3. Run `ruff check --fix` and `pyright src/`.
+
+### [skill:validate] - Tester/Reviewer Role
+- Trigger: Task is `CODE_WRITTEN`.
+- Protocol:
+  1. Write/Update `tests/test_[ID].py`.
+  2. Run `pytest`. If failure, generate detailed explanation.
+  3. Check TQS (Technical Quality Score) based on: Contracts, Security, Architecture, Code Quality, Testability.
+
+### [skill:archive] - Writer Role
+- Trigger: Task is `READY_TO_MERGE`.
+- Protocol:
+  1. Update `logs/dev_diary.md` with "Why" and "How".
+  2. Move spec to `archive/`.
+  3. Set status to `DONE` in `status.yaml`.
+
+## 🐍 Python Best Practices
+- Use `asyncio` for I/O bound tasks (Bot, Scraper).
+- Prefer `pathlib` over `os.path`.
+- Always include Docstrings with Pre/Post conditions.
+
